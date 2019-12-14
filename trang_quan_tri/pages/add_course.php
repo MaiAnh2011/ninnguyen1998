@@ -1,7 +1,19 @@
-<h1>Thêm khóa học</h1>
-<form action="xl_add_course.php" method="post">
-	Mã khóa học: <input type="text" name="ma_kh"><br>
-	Tên khóa học: <input type="text" name="ten_kh"><br>
-	Ngôn ngữ: <input type="text" name="ngon_ngu"><br>
-	<input type="submit" name="add" value="Thêm khóa học">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Thêm khóa học</title>
+	<link rel="stylesheet" type="text/css" href="add_course.css">
+</head>
+<body>
+	<p style="margin-left: 680px;
+    margin-top: 200px; font-size: 50px; color: red">Thêm khóa học</p>
+<form action="xl_add_course.php" method="post" style="margin-left: 500px;">
+	<span id="idma">Mã khóa học</span><input type="text" name="ma_kh" id="ma"><br>
+	<span id="idten">Tên khóa học</span><input type="text" name="ten_kh" id = "ten"><br>
+	<span id="idnn">Ngôn ngữ</span> <input type="text" name="ngon_ngu" id="nn"><br>
+	<input type="submit" value="Thêm" id="btnthem">
 </form>
+</body>
+</html>

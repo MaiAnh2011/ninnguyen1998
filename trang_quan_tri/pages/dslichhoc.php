@@ -5,6 +5,12 @@
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
         $sql = "select * from schedule";
+        if(isset($_POST['search']))
+        {
+            $tk = $_POST['search'];
+            $sql = "select * from schedule where id_schedule like '%$tk%' or id_kind like N'%$tk%' or id_course like N'%$tk%'
+            or id_room like '%$tk%' or monday like N'%$tk%' or tuesday like N'%$tk%' or wednesday like N'%$tk%' or thursday like N'%$tk%' or friday like N'%$tk%' or saturday like N'%$tk%'";
+        }
         $qr = mysqli_query($con,$sql);
 
 ?>
@@ -59,12 +65,12 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Trang chủ</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="nav-link" href="danhsachkhoahoc.php">
                             <i class="nc-icon nc-circle-09"></i>
@@ -117,6 +123,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="row">
+
+                            <form action="" method="POST" role="form">
+                                <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
+                                <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
+                            </form>
+                        </div>
                         <h1 style="text-align: center; margin-left: 300px">Thời khóa biểu</h1>
                         <br><br><br>
 
@@ -124,7 +137,7 @@
                             <tr>
                                 <th style="text-align: center;">STT</th>
                                 <th style="text-align: center;">Mã TKB</th>
-                                <th style="text-align: center;">Loại</th>
+                                <th style="text-align: center;">Độ tuổi</th>
                                 <th style="text-align: center;">Khóa học</th>
                                 <th style="text-align: center;">Phòng</th>
                                 <th style="text-align: center;">Thứ 2</th>
@@ -150,7 +163,7 @@
                                     echo "<td>".$stt['thursday']. "</td>";
                                     echo "<td>".$stt['friday']. "</td>";
                                     echo "<td>".$stt['saturday']. "</td>";
-                                    echo "<td><a href=''>Thêm</a> | <a href=''>Sửa</a> | <a href=''>Xóa</a></td>";
+                                    echo "<td><a href='add_lichhoc.php'>Thêm</a> | <a href='update_lichhoc.php?id_schedule=".$stt['id_schedule']."'>Sửa</a> | <a href='delete_lichhoc.php?id_schedule=".$stt['id_schedule']."'>Xóa</a></td>";
                                     echo"</tr>";
                                     $i++;
                             }

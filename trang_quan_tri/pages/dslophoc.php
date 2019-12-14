@@ -5,6 +5,12 @@
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
         $sql = "select * from class";
+        if(isset($_POST['search']))
+        {
+            $tk = $_POST['search'];
+            $sql = "select * from class where id_class like '%$tk%' or name_class like N'%$tk%' or id_course like N'%$tk%'
+            or id_teacher like '%$tk%' or id_kind like N'%$tk%'";
+        }
         $qr = mysqli_query($con,$sql);
 
 ?>
@@ -59,12 +65,12 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Trang chủ</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="nav-link" href="danhsachkhoahoc.php">
                             <i class="nc-icon nc-circle-09"></i>
@@ -117,6 +123,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="row">
+
+                            <form action="" method="POST" role="form">
+                                <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
+                                <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
+                            </form>
+                        </div>
                         <h1 style="text-align: center; margin-left: 300px">Danh sách lớp học</h1>
                         <br><br><br>
 
@@ -140,7 +153,7 @@
                                     echo "<td>".$stt['id_course']. "</td>";
                                     echo "<td>".$stt['id_teacher']. "</td>";
                                     echo "<td>".$stt['id_kind']. "</td>";
-                                    echo "<td><a href=''>Thêm</a> | <a href=''>Sửa</a> | <a href=''>Xóa</a></td>";
+                                    echo "<td><a href='add_class.php'>Thêm</a> | <a href='update_class.php?id_class=".$stt['id_class']."'>Sửa</a> | <a href='delete_class.php?id_class=".$stt['id_class']."'>Xóa</a></td>";
                                     echo"</tr>";
                                     $i++;
                             }

@@ -19,7 +19,7 @@
 		{
 			#login successful
 			$_SESSION['user'] = $user['username'];
-			header('location: dashboard.html');
+			header('location: danhsachkhoahoc.php');
 		}
 		else
 		{
@@ -32,9 +32,10 @@
 <html>
 <head>
 	<title>Đăng nhập</title>
+	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
-	<div class="container">
+	<div class="container" style="background: url(../img/banner1.jpg)">
 		<?php if(isset($error)): ?>
 			<div class="alert alert-danger error">
 			<strong>Lỗi</strong>Tài khoản hoặc mật khẩu sai.
@@ -44,18 +45,14 @@
 
 		<form class="form-signin" method="post">
 			<h2 class="form-signin-heading">Đăng nhập hệ thống</h2>
-			<div class="form-group">
-				<input type="text" name="username" class="form-control" id="username" placeholder="Username" minlength="2" maxlength="20" autofocus required>
+			<div class="form-group" >
+				<input type="text" id="user" name="username" class="form-control" id="username" placeholder="Username" minlength="2" maxlength="20" autofocus required>
 			</div>
 			<div class="form-group">
-				<input type="password" name="password" class="form-group" id="password" placeholder="Password" minlength="2" maxlength="20" required>
+				<input type="password" id="pass" name="password" class="form-group" id="password" placeholder="Password" minlength="2" maxlength="20" required>
 			</div>
-			<div class="checkbox">
-				<label>
-					<input type="checkbox" name="remember">Ghi nhớ
-				</label>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" type="submit" name="submit">Đăng nhập</button>
+			
+			<button class="btn btn-lg btn-primary btn-block" id="btndangnhap" type="submit" name="submit">Đăng nhập</button>
 		</form>
 	</div>
 </body>

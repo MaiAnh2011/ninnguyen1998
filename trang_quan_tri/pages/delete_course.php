@@ -1,10 +1,9 @@
 <?php
-	$ma_khoa = $_POST['ma_kh'];
-	$ten_khoa = $_POST['ten_kh'];
-	$nn = $_POST['ngon_ngu'];
+	$id = $_GET['id_course'];
+	
 
 	$con = mysqli_connect("localhost", "root","","qlttnn") or die ("loi ket noi");
-	$sql = "insert into course values('$ma_khoa','$ten_khoa','$nn')";
+	$sql = "delete from course where id_course = '$id'";
     $qr = mysqli_query($con,$sql);
 
     if(!$qr)

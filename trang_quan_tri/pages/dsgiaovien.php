@@ -5,6 +5,13 @@
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
         $sql = "select * from teacher";
+        if(isset($_POST['search']))
+        {
+            $tk = $_POST['search'];
+            $sql = "select * from teacher where id_teacher like '%$tk%' or last_name like N'%$tk%' or first_name like N'%$tk%'
+            or date_of_birth like '%$tk%' or sex like N'%$tk%' or email like N'%$tk%' or phone like '%$tk%'
+            or date_start_working like '%$tk%' or address_tc like N'%$tk%' or level_tc like N'%$tk%'";
+        }
         $qr = mysqli_query($con,$sql);
 
 ?>
@@ -59,12 +66,12 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Trang chủ</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="nav-link" href="danhsachkhoahoc.php">
                             <i class="nc-icon nc-circle-09"></i>
@@ -117,6 +124,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="row">
+
+                            <form action="" method="POST" role="form">
+                                <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
+                                <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
+                            </form>
+                        </div>
                         <h1 style="text-align: center; margin-left: 400px">Danh sách giáo viên</h1>
                         <br><br><br>
 
@@ -150,7 +164,7 @@
                                     echo "<td>".$stt['date_start_working']. "</td>";
                                     echo "<td>".$stt['address_tc']. "</td>";
                                     echo "<td>".$stt['level_tc']. "</td>";
-                                    echo "<td><a href=''>Thêm</a> | <a href=''>Sửa</a> | <a href=''>Xóa</a></td>";
+                                    echo "<td><a href='add_teacher.php'>Thêm</a> | <a href='update_teacher.php?id_teacher=".$stt['id_teacher']."'>Sửa</a> | <a href='delete_teacher.php?id_teacher=".$stt['id_teacher']."'>Xóa</a></td>";
                                     echo"</tr>";
                                     $i++;
                             }

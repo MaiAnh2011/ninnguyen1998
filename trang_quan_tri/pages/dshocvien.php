@@ -5,6 +5,12 @@
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
         $sql = "select * from student";
+        if(isset($_POST['search']))
+        {
+            $tk = $_POST['search'];
+            $sql = "select * from student where id_student like '%$tk%' or last_name like N'%$tk%' or first_name like N'%$tk%'
+            or date_of_birth like '%$tk%' or sex like N'%$tk%' or email like N'%$tk%' or address_st like N'%$tk%' or level_st like N'%$tk%'";
+        }
         $qr = mysqli_query($con,$sql);
 
 ?>
@@ -59,12 +65,12 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="nav-item active">
+                    <!-- <li class="nav-item active">
                         <a class="nav-link" href="dashboard.html">
                             <i class="nc-icon nc-chart-pie-35"></i>
                             <p>Trang chủ</p>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="nav-link" href="danhsachkhoahoc.php">
                             <i class="nc-icon nc-circle-09"></i>
@@ -117,6 +123,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="row">
+
+                            <form action="" method="POST" role="form">
+                                <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
+                                <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
+                            </form>
+                        </div>
                         <h1 style="text-align: center; margin-left: 300px">Danh sách học viên</h1>
                         <br><br><br>
 
@@ -146,7 +159,7 @@
                                     echo "<td>".$stt['email']. "</td>";
                                     echo "<td>".$stt['address_st']. "</td>";
                                     echo "<td>".$stt['level_st']. "</td>";
-                                    echo "<td><a href=''>Thêm</a> | <a href=''>Sửa</a> | <a href=''>Xóa</a></td>";
+                                    echo "<td><a href='add_student.php'>Thêm</a> | <a href='update_student.php?id_student=".$stt['id_student']."'>Sửa</a> | <a href='delete_student.php?id_student=".$stt['id_student']."'>Xóa</a></td>";
                                     echo"</tr>";
                                     $i++;
                             }

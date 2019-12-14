@@ -1,0 +1,39 @@
+#ma, #ten, #nn
+{
+	width: 400px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 20px;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5px
+}
+#ma
+{
+    margin-left: 10px;
+}
+#ten
+{
+    margin-left: 3px;
+}
+#nn
+{
+    margin-left: 41px;
+}
+span
+{
+    font-size: 30px;
+    margin-right: 10px;
+}
+#btncapnhat
+{
+    font-size: 30px;
+    border: 1px solid blue;
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+    background: #fff;
+    margin-left: 310px;
+    margin-top: 20px;
+    color: blue
+}
