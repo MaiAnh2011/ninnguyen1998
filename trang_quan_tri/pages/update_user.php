@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sửa giáo viên</title>
+	<title>Sửa người dùng</title>
 	<link rel="stylesheet" type="text/css" href="add_lichhoc.css">
 </head>
 <body>
@@ -22,6 +22,7 @@
 	<p id="idma">STT</p><br><input class="ipdl" type="text" name="stt" value = "<?php echo $rs['STT'];?>">
 	<p id="idten">UserName</p><br><input class="ipdl" type="text" name="userName" value = "<?php echo $rs['username'];?>">
 	<p id="idnn">Pass</p><br><input class="ipdl" type="text" name="passWord" value = "<?php echo $rs['pass'];?>">
+	<p id="idnn">Phân quyền</p><br><input class="ipdl" type="text" name="pq" value = "<?php echo $rs['pq'];?>">
 	<br>
 	<input type="submit" value="Cập nhật" id="btncapnhat">
 </form>

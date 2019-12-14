@@ -13,6 +13,7 @@
 	<p>STT</p><br><input type="text" name="stt" class="ipdl">	
 	<p>UserName</p><br><input type="text" name="userName" class="ipdl">
 	<p>Pass</p><br> <input type="text" name="passWord" class="ipdl">
+	<p>Phân quyền</p><br> <input type="text" name="pq" class="ipdl">
 	<br>
 	<input type="submit" value="Thêm" id="btnthem">
 </form>

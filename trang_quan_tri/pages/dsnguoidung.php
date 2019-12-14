@@ -137,6 +137,7 @@
                                 <th style="text-align: center;">STT</th>
                                 <th style="text-align: center;">UserName</th>
                                 <th style="text-align: center;">PassWord</th>
+                                <th style="text-align: center;">Phân quyền</th>
                                 <th style="text-align: center;">Thao tác</th>
                             </tr>
                             <?php
@@ -146,6 +147,7 @@
                                     echo "<td>".$i. "</td>";
                                     echo "<td>".$stt['username']. "</td>";
                                     echo "<td>".$stt['pass']. "</td>";
+                                    echo "<td>".$stt['pq']. "</td>";
                                     echo "<td><a href='add_user.php'>Thêm</a> | <a href='update_user.php?stt=".$stt['STT']."'>Sửa</a> | <a href='delete_user.php?STT=".$stt['STT']."'>Xóa</a></td>";
                                     echo"</tr>";
                                     $i++;
