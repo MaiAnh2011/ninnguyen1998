@@ -138,7 +138,9 @@
 								<th style="text-align: center;">STT</th>
 								<th style="text-align: center;">Mã khóa học</th>
 								<th style="text-align: center;">Tên khóa học</th>
-								<th style="text-align: center;">Ngôn ngữ</th>
+                                <th style="text-align: center;">Ngày bắt đầu</th>
+                                <th style="text-align: center;">Ngày kết thúc</th>
+                                <th style="text-align: center;">Ngôn ngữ</th>
 								<th style="text-align: center;">Thao tác</th>
 							</tr>
 							<?php
@@ -148,6 +150,8 @@
 									echo "<td>".$i. "</td>";
 									echo "<td>".$stt['id_course']. "</td>";
 									echo "<td>".$stt['name_course']. "</td>";
+                                    echo "<td>".$stt['date_start']. "</td>";
+                                    echo "<td>".$stt['date_end']. "</td>";
 									echo "<td>".$stt['LANGUAGE_nn']. "</td>";
 									echo "<td><a href='add_course.php'>Thêm</a> | <a href='update_course.php?id_course=".$stt['id_course']."'>Sửa</a> | <a href='delete_course.php?id_course=".$stt['id_course']."'>Xóa</a></td>";
 									echo"</tr>";
