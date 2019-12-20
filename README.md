@@ -24,6 +24,14 @@
 -	Tiền học phí, tiền lương của học viên, giáo viên.
 
 <strong>3. Các bước cài đặt và một số công cụ hỗ trợ</strong><br>
- 	Các bước cài đặt:
+ 	<strong>Các bước cài đặt:</strong>
 -	Clone reponsive về máy.
 	![ảnh 1](imd_rm/anh1.png)
+-	Đảm bảo máy đã có Xampp.
+	![ảnh 2](imd_rm/anh2.png)
+-	Đưa project vừa tải về vào thư mục htdocs trong Xampp.
+	![ảnh 3](imd_rm/anh3.png)
+-	Bật Xampp.
+-	Qua trình duyệt gõ localhost:/cổng -> trỏ đến thư mục của project
+	![ảnh 4](imd_rm/anh4.png)
+	<strong>Công cụ hỗ trợ: Xampp</strong>
