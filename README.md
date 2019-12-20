@@ -1,4 +1,4 @@
-<strong>1. Mô tả bài toán</strong>
+<strong>1. Mô tả bài toán</strong><br>
  	Bài toán áp dụng cho trung tâm ngoại ngữ Yên Chi
  	Áp dụng vào việc quản lý trung tâm như 
 - 	Quản lý giáo viên, tính lương.
@@ -7,7 +7,7 @@
 -	Quản lý khóa học, lịch học.
 -	Chức năng theo dõi lịch học, lịch công tác, kết quả của học viên, giáo viên.
 
-<strong>2. Mục đích của bài toán</strong>
+<strong>2. Mục đích của bài toán</strong><br>
  	**Đầu vào**:
 -Thông tin khách hàng: 
 - Học viên
@@ -22,6 +22,7 @@
 -	Thông tin lịch học, lịch giảng dạy của học viên, giáo viên.
 -	Tiền học phí, tiền lương của học viên, giáo viên.
 
-<strong>3. Các bước cài đặt và một số công cụ hỗ trợ</strong>
+<strong>3. Các bước cài đặt và một số công cụ hỗ trợ</strong><br>
  	Các bước cài đặt:
 -	Clone reponsive về máy.
+	![ảnh 1](imd_rm/anh1.png)
