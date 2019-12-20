@@ -9,7 +9,7 @@
 
 <strong>2. Mục đích của bài toán</strong><br>
  	**Đầu vào**:<br>
- 	<p>---------------</p>
+
 -Thông tin khách hàng: 
 - Học viên
       + Thông tin cá nhân 
