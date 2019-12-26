@@ -8,7 +8,7 @@
 
     if(!$qr)
     {
-    	echo "123";
+    	echo "Thất bại";
     }
     else
     	header("location: http://localhost:8081/btl_php/light-bootstrap-dashboard-master/examples/dslophoc.php");
