@@ -51,7 +51,7 @@
 	![ảnh 4](imd_rm/anh10.png)
 	+ Chức năng sửa:
 	![ảnh 4](imd_rm/anh11.png)
-	+ Chức năng xóa
+	+ Chức năng xóa<br>
 <strong>5. Hướng phát triển của hệ thống</strong>
 -	Gửi thông báo về mail cho từng thành viên trong trung tâm
 -	Tính lương theo bảng chấm công
