@@ -52,8 +52,16 @@
 	![ảnh 4](imd_rm/anh10.png)
 	+ Chức năng sửa:
 	![ảnh 4](imd_rm/anh11.png)
-	+ Chức năng xóa<br>
+	+ Chức năng xóa
+
 <strong>5. Hướng phát triển của hệ thống</strong><br>
 -	Gửi thông báo về mail cho từng thành viên trong trung tâm
 -	Tính lương theo bảng chấm công
 	![ảnh 4](imd_rm/anh12.png)
+- 	Thống kê theo tuần, tháng, quý để đưa ra những chương trình khuyến mãi phù hợp.
+-	Biểu đồ kinh doanh theo tuần, tháng, quý, năm
+	![ảnh 4](imd_rm/anh13.png)
+	![ảnh 4](imd_rm/anh14.png)
+-	Triển khai hệ thống test đầu vào và đầu ra trên hệ thống.
+	![ảnh 4](imd_rm/anh16.png)
+	![ảnh 4](imd_rm/anh15.png)
