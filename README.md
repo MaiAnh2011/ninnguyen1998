@@ -35,4 +35,9 @@
 -	Qua trình duyệt gõ localhost:/cổng -> trỏ đến thư mục của project
 	![ảnh 4](imd_rm/anh4.png)
 	<strong>Công cụ hỗ trợ: Xampp</strong>
-<strong>4. Nội dung bài toán
+<strong>4. Nội dung bài toán</strong>
+	<strong>Các chức năng đã làm được</strong>
+- 	Quản bá trung tâm
+	![ảnh 4](imd_rm/anh5.png)
+	![ảnh 4](imd_rm/anh6.png)
+aaaa
