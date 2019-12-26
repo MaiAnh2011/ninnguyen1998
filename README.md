@@ -37,7 +37,22 @@
 	<strong>Công cụ hỗ trợ: Xampp</strong>
 <strong>4. Nội dung bài toán</strong>
 	<strong>Các chức năng đã làm được</strong>
-- 	Quản bá trung tâm
+- 	Quảng bá trung tâm
 	![ảnh 4](imd_rm/anh5.png)
 	![ảnh 4](imd_rm/anh6.png)
-aaaa
+- 	Đăng nhập vào trang admin sử dụng tài khoản (username: abc, pass: 123)
+	![ảnh 4](imd_rm/anh7.png)
+- 	Sau khi đăng nhập thành công sẽ đưa tới trang Admin với giao diện như sau:
+	![ảnh 4](imd_rm/anh8.png)
+- 	Các chức năng thêm xóa sửa tìm kiếm khóa học, lịch học, học viên, giáo viên....
+	+ Chức năng tìm kiếm gần đúng với từ nhập vào
+	![ảnh 4](imd_rm/anh9.png)
+	+ Chức năng thêm: (Thao tác trên bảng Người dùng)(phân quyền: 0-user, 1- admin)
+	![ảnh 4](imd_rm/anh10.png)
+	+ Chức năng sửa:
+	![ảnh 4](imd_rm/anh11.png)
+	+ Chức năng xóa
+<strong>5. Hướng phát triển của hệ thống</strong>
+-	Gửi thông báo về mail cho từng thành viên trong trung tâm
+-	Tính lương theo bảng chấm công
+	![ảnh 4](imd_rm/anh12.png)
