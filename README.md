@@ -65,3 +65,8 @@
 -	Triển khai hệ thống test đầu vào và đầu ra trên hệ thống.
 	![ảnh 4](imd_rm/anh16.png)
 	![ảnh 4](imd_rm/anh15.png)
+
+<strong>Tác giả</strong><br>
+-	Nguyễn Thị Nin
+-	Link facebook: https://www.facebook.com/nin.nguyen.1217?ref=bookmarks
+-	Nếu cần biết thông tin chi tiết, hãy liên hệ với tôi ở tài khoản facebook như trên
