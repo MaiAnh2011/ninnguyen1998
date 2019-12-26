@@ -35,7 +35,8 @@
 -	Qua trình duyệt gõ localhost:/cổng -> trỏ đến thư mục của project
 	![ảnh 4](imd_rm/anh4.png)
 	<strong>Công cụ hỗ trợ: Xampp</strong>
-<strong>4. Nội dung bài toán</strong>
+
+<strong>4. Nội dung bài toán</strong><br>
 	<strong>Các chức năng đã làm được</strong>
 - 	Quảng bá trung tâm
 	![ảnh 4](imd_rm/anh5.png)
@@ -52,7 +53,7 @@
 	+ Chức năng sửa:
 	![ảnh 4](imd_rm/anh11.png)
 	+ Chức năng xóa<br>
-<strong>5. Hướng phát triển của hệ thống</strong>
+<strong>5. Hướng phát triển của hệ thống</strong><br>
 -	Gửi thông báo về mail cho từng thành viên trong trung tâm
 -	Tính lương theo bảng chấm công
 	![ảnh 4](imd_rm/anh12.png)
