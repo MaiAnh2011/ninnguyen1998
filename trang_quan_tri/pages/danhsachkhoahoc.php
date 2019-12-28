@@ -141,7 +141,8 @@
                                 <th style="text-align: center;">Ngày bắt đầu</th>
                                 <th style="text-align: center;">Ngày kết thúc</th>
                                 <th style="text-align: center;">Ngôn ngữ</th>
-								<th style="text-align: center;">Thao tác</th>
+								<th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
 							</tr>
 							<?php
 								$i = 1;
@@ -153,11 +154,27 @@
                                     echo "<td>".$stt['date_start']. "</td>";
                                     echo "<td>".$stt['date_end']. "</td>";
 									echo "<td>".$stt['LANGUAGE_nn']. "</td>";
-									echo "<td><a href='add_course.php'>Thêm</a> | <a href='update_course.php?id_course=".$stt['id_course']."'>Sửa</a> | <a href='delete_course.php?id_course=".$stt['id_course']."'>Xóa</a></td>";
+									// echo "<td><a href='add_course.php'>Thêm</a> | <a href='update_course.php?id_course=".$stt['id_course']."'>Sửa</a> | <a href='delete_course.php?id_course=".$stt['id_course']."'>Xóa</a></td>";
+
+                                    echo "<td><a href='add_course.php'>Thêm</a> | <a href='update_course.php?id_course=".$stt['id_course']."'>Sửa</a></td>";
+                                    echo "<td><input type="button" onClick="deleteme(<?php echo $stt['id_course']; ?>)" name="Delete" value="Xóa"></td>"
+                                   
 									echo"</tr>";
+
 									$i++;
+
 							}
 							?>
+                            <script type="text/javascript">
+                                function deleteme(dele)
+                                {
+                                    if(confirm("Bạn có chắc chắn muốn xóa?"))
+                                    {
+                                        window.location.href = 'delete_course.php?id_course = ' + dele + '';
+                                        return true; 
+                                    }
+                                }
+                            </script>
 						</table>
                         
                     </div>
