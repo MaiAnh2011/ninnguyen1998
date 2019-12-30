@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2019 at 08:00 PM
+-- Generation Time: Dec 30, 2019 at 11:49 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.33
 
@@ -32,16 +32,17 @@ CREATE TABLE `account` (
   `STT` int(11) NOT NULL,
   `username` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `pass` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pq` bit(1) DEFAULT NULL
+  `pq` bit(1) DEFAULT NULL,
+  `id_user` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`STT`, `username`, `pass`, `pq`) VALUES
-(1, 'abc', '123', b'1'),
-(2, 'xyz', '456', b'1');
+INSERT INTO `account` (`STT`, `username`, `pass`, `pq`, `id_user`) VALUES
+(1, 'abc', '123', b'1', 'hv01'),
+(2, 'xyz', '456', b'1', 'hv02');
 
 -- --------------------------------------------------------
 
