@@ -16,7 +16,7 @@
 </head>
 <body>
 	<p style="margin-left: 680px;
-    margin-top: 200px; font-size: 50px; color: red">Cập nhật khóa học</p>
+    margin-top: 50px; font-size: 50px; color: red">Cập nhật khóa học</p>
 <form action="xl_update_course.php" method="post" style="margin-left: 500px;">
 	<input type="hidden" name="id" value = "<?php echo $id;?>"><br>
 	<p id="idma">Mã khóa học</p><br><input class="ipdl" id="ma" type="text" name="ma_kh" value = "<?php echo $rs['id_course'];?>"><br>

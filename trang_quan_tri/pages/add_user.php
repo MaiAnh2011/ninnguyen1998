@@ -14,6 +14,7 @@
 	<p>UserName</p><br><input type="text" name="userName" class="ipdl">
 	<p>Pass</p><br> <input type="text" name="passWord" class="ipdl">
 	<p>Phân quyền</p><br> <input type="text" name="pq" class="ipdl">
+	<p>Người dùng</p><br> <input type="text" name="id_user" class="ipdl">
 	<br>
 	<input type="submit" value="Thêm" id="btnthem">
 </form>

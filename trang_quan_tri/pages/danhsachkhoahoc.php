@@ -12,10 +12,7 @@
     }
     $qr = mysqli_query($con,$sql);
 
-
-    
-    $sql1 = "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."' ";
-    $result = mysqli_query($con, $sql1);
+    $result = mysqli_query($con, $sql);
     $rows = mysqli_num_rows($result);
 
 ?>

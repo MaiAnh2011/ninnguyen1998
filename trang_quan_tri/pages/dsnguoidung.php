@@ -138,20 +138,32 @@
                                 <th style="text-align: center;">UserName</th>
                                 <th style="text-align: center;">PassWord</th>
                                 <th style="text-align: center;">Phân quyền</th>
-                                <th style="text-align: center;">Thao tác</th>
+                                <th style="text-align: center;">Người dùng</th>
+                                <th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
                             </tr>
                             <?php
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                                    echo "<tr>";
-                                    echo "<td>".$i. "</td>";
-                                    echo "<td>".$stt['username']. "</td>";
-                                    echo "<td>".$stt['pass']. "</td>";
-                                    echo "<td>".$stt['pq']. "</td>";
-                                    echo "<td><a href='add_user.php'>Thêm</a> | <a href='update_user.php?stt=".$stt['STT']."'>Sửa</a> | <a href='delete_user.php?STT=".$stt['STT']."'>Xóa</a></td>";
-                                    echo"</tr>";
+                            ?>
+
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $stt['username']; ?></td>
+                                <td><?php echo $stt['pass']; ?></td>
+                                <td><?php echo $stt['pq']; ?></td>
+                                <td><?php echo $stt['id_user']; ?></td>
+                                <td>
+                                    <a href='add_user.php'>Thêm</a>
+                                    <a href='update_user.php?stt=<?php echo $stt['STT']; ?>'> | Sửa</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:confirmDelete(' delete_user.php?STT=<?php echo $stt['STT']; ?>')">Xóa</a>
+                                </td>
+                            </tr>
+                            <?php                     
                                     $i++;
-                            }
+                                }
                             ?>
                         </table>
                         
@@ -222,6 +234,13 @@
         demo.showNotification();
 
     });
+    function confirmDelete(delUrl) 
+    { 
+        if (confirm("Bạn có chắc là muốn xóa?")) 
+        { 
+        document.location = delUrl; 
+        } 
+    } 
 </script>
 
 </html>
