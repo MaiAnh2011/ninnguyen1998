@@ -160,10 +160,10 @@
                                 <td><?php echo $stt['status_n']; ?></td>
                                 <td>
                                     <a href='add_student_class.php'>Thêm</a>
-                                    <a href='update_student_class.php?id_class=<?php echo $stt['id_class']; ?>?id_student=<?php echo $stt['id_student']; ?>'> | Sửa</a>
+                                    <a href='update_student_class.php?stt=<?php echo $stt['stt']; ?>'> | Sửa</a>
                                 </td>
                                 <td>
-                                    <a href="javascript:confirmDelete(' delete_student_class.php?id_class=<?php echo $stt['id_class']; ?>?id_student=<?php echo $stt['id_student']; ?>')">Xóa</a>
+                                    <a href="javascript:confirmDelete(' delete_student_class.php?stt=<?php echo $stt['stt']; ?>')">Xóa</a>
                                 </td>
                             </tr>
                             <?php                     

@@ -9,6 +9,7 @@
 	<p style="margin-left: 680px;
     margin-top: 50px; font-size: 50px; color: red">Đăng ký lớp học</p>
 	<form action="xl_add_student_class.php" method="post" style="margin-left: 500px;">
+		<p>STT</p><input type="text" name="stt" class="indl">	
 		<p>Mã lớp học</p><input type="text" name="ma_lop" class="indl">	
 		<p>Mã học viên</p><input type="text" name="ma_hv" class="indl">
 		<p>Tình trạng nộp</p> <input type="text" name="nop" class="indl">
