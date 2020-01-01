@@ -163,7 +163,7 @@
                                 <td><?php echo $stt['LANGUAGE_nn']; ?></td>
                                 <td>
                                     <a href='add_course.php'>Thêm</a>
-                                    <a href='update_course.php?id_course=<?php echo $stt['id_course']; ?>'>Sửa</a>
+                                    <a href='update_course.php?id_course=<?php echo $stt['id_course']; ?>'> | Sửa</a>
                                 </td>
                                 <td>
                                     <a href="javascript:confirmDelete(' delete_course.php?id_course=<?php echo $stt['id_course']; ?>')">Xóa</a>

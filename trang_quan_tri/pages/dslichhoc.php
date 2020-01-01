@@ -123,17 +123,17 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="row">
+                        <div class="row" style="margin-top: 30px">
 
-                            <form action="" method="POST" role="form">
+                            <form action="" method="POST" role="form" >
                                 <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        <h1 style="text-align: center; margin-left: 300px">Thời khóa biểu</h1>
+                        <h1 style="text-align: center; margin-left: -200px; margin-top: 130px">Thời khóa biểu</h1>
                         <br><br><br>
 
-                        <table border="1" style="width: 80%;text-align: center; margin: 50px">
+                        <table border="1" style="width: 100%;text-align: center; margin: 50px">
                             <tr>
                                 <th style="text-align: center;">STT</th>
                                 <th style="text-align: center;">Mã TKB</th>
@@ -146,27 +146,36 @@
                                 <th style="text-align: center;">Thứ 5</th>
                                 <th style="text-align: center;">Thứ 6</th>
                                 <th style="text-align: center;">Thứ 7</th>
-                                <th style="text-align: center;">Thao tác</th>
+                                <th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
                             </tr>
                             <?php
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                                    echo "<tr>";
-                                    echo "<td>".$i. "</td>";
-                                    echo "<td>".$stt['id_schedule']. "</td>";
-                                    echo "<td>".$stt['id_kind']. "</td>";
-                                    echo "<td>".$stt['id_course']. "</td>";
-                                    echo "<td>".$stt['id_room']. "</td>";
-                                    echo "<td>".$stt['monday']. "</td>";
-                                    echo "<td>".$stt['tuesday']. "</td>";
-                                    echo "<td>".$stt['wednesday']. "</td>";
-                                    echo "<td>".$stt['thursday']. "</td>";
-                                    echo "<td>".$stt['friday']. "</td>";
-                                    echo "<td>".$stt['saturday']. "</td>";
-                                    echo "<td><a href='add_lichhoc.php'>Thêm</a> | <a href='update_lichhoc.php?id_schedule=".$stt['id_schedule']."'>Sửa</a> | <a href='delete_lichhoc.php?id_schedule=".$stt['id_schedule']."'>Xóa</a></td>";
-                                    echo"</tr>";
+                            ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $stt['id_schedule']; ?></td>
+                                <td><?php echo $stt['id_kind']; ?></td>
+                                <td><?php echo $stt['id_course']; ?></td>
+                                <td><?php echo $stt['id_room']; ?></td>
+                                <td><?php echo $stt['monday']; ?></td>
+                                <td><?php echo $stt['tuesday']; ?></td>
+                                <td><?php echo $stt['wednesday']; ?></td>
+                                <td><?php echo $stt['thursday']; ?></td>
+                                <td><?php echo $stt['friday']; ?></td>
+                                <td><?php echo $stt['saturday']; ?></td>
+                                <td>
+                                    <a href='add_lichhoc.php'>Thêm</a>
+                                    <a href='update_lichhoc.php?id_schedule=<?php echo $stt['id_schedule']; ?>'> | Sửa</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:confirmDelete(' delete_lichhoc.php?id_schedule=<?php echo $stt['id_schedule']; ?>')">Xóa</a>
+                                </td>
+                            </tr>
+                            <?php                     
                                     $i++;
-                            }
+                                }
                             ?>
                         </table>
                         
@@ -237,6 +246,13 @@
         demo.showNotification();
 
     });
+    function confirmDelete(delUrl) 
+    { 
+        if (confirm("Bạn có chắc là muốn xóa?")) 
+        { 
+        document.location = delUrl; 
+        } 
+    } 
 </script>
 
 </html>

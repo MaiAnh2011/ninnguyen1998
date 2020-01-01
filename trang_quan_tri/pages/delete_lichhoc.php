@@ -11,5 +11,5 @@
     	echo "123";
     }
     else
-    	header("location: http://localhost:8081/btl_php/light-bootstrap-dashboard-master/examples/dslichhoc.php");
+    	header("location: dslichhoc.php");
 ?>
