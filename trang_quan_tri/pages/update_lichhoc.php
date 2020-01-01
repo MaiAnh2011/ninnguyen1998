@@ -27,7 +27,7 @@
 	<p id="idnn">Thứ 3</p><br><input class="ipdl" id="nn" type="text" name="thu_3" value = "<?php echo $rs['tuesday'];?>"><br>
 	<p id="idma">Thứ 4</p><br><input class="ipdl" id="ma" type="text" name="thu_4" value = "<?php echo $rs['wednesday'];?>"><br>
 	<p id="idten">Thứ 5</p><br><input class="ipdl" id="ten" type="text" name="thu_5" value = "<?php echo $rs['thursday'];?>"><br>
-	<p id="idnn">Thứ 6</p><br><input class="ipdl" id="nn" type="text" name="thu_7" value = "<?php echo $rs['friday'];?>"><br>
+	<p id="idnn">Thứ 6</p><br><input class="ipdl" id="nn" type="text" name="thu_6" value = "<?php echo $rs['friday'];?>"><br>
 	<p id="idma">Thứ 7</p><br><input class="ipdl" id="ma" type="text" name="thu_7" value = "<?php echo $rs['saturday'];?>"><br>
 	<input type="submit" value="Cập nhật" id="btncapnhat">
 </form>

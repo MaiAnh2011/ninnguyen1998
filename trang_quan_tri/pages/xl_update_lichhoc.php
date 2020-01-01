@@ -20,5 +20,5 @@
         echo "123";
     }
     else
-        header("location: http://localhost:8081/btl_php/trang_quan_tri/pages/dslichhoc.php");
+        header("location: dslichhoc.php");
 ?>
