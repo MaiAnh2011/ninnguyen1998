@@ -144,25 +144,34 @@
                                 <th style="text-align: center;">Email</th>
                                 <th style="text-align: center;">Địa chỉ</th>
                                 <th style="text-align: center;">Trình độ</th>
-                                <th style="text-align: center;">Thao tác</th>
+                                <th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
                             </tr>
                             <?php
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                                    echo "<tr>";
-                                    echo "<td>".$i. "</td>";
-                                    echo "<td>".$stt['id_student']. "</td>";
-                                    echo "<td>".$stt['last_name']. "</td>";
-                                    echo "<td>".$stt['first_name']. "</td>";
-                                    echo "<td>".$stt['date_of_birth']. "</td>";
-                                    echo "<td>".$stt['sex']. "</td>";
-                                    echo "<td>".$stt['email']. "</td>";
-                                    echo "<td>".$stt['address_st']. "</td>";
-                                    echo "<td>".$stt['level_st']. "</td>";
-                                    echo "<td><a href='add_student.php'>Thêm</a> | <a href='update_student.php?id_student=".$stt['id_student']."'>Sửa</a> | <a href='delete_student.php?id_student=".$stt['id_student']."'>Xóa</a></td>";
-                                    echo"</tr>";
+                            ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $stt['id_student']; ?></td>
+                                <td><?php echo $stt['last_name']; ?></td>
+                                <td><?php echo $stt['first_name']; ?></td>
+                                <td><?php echo $stt['date_of_birth']; ?></td>
+                                <td><?php echo $stt['sex']; ?></td>
+                                <td><?php echo $stt['email']; ?></td>
+                                <td><?php echo $stt['address_st']; ?></td>
+                                <td><?php echo $stt['level_st']; ?></td>
+                                <td>
+                                    <a href='add_student.php'>Thêm</a>
+                                    <a href='update_student.php?id_student=<?php echo $stt['id_student']; ?>'> | Sửa</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:confirmDelete(' delete_student.php?id_student=<?php echo $stt['id_student']; ?>')">Xóa</a>
+                                </td>
+                            </tr>
+                            <?php                     
                                     $i++;
-                            }
+                                }
                             ?>
                         </table>
                         
@@ -233,6 +242,13 @@
         demo.showNotification();
 
     });
+    function confirmDelete(delUrl) 
+    { 
+        if (confirm("Bạn có chắc là muốn xóa?")) 
+        { 
+        document.location = delUrl; 
+        } 
+    } 
 </script>
 
 </html>
