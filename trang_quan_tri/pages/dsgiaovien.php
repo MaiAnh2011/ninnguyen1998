@@ -147,27 +147,36 @@
                                 <th style="text-align: center;">Ngày vào làm</th>
                                 <th style="text-align: center;">Địa chỉ</th>
                                 <th style="text-align: center;">Trình độ</th>
-                                <th style="text-align: center;">Thao tác</th>
+                                <th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
                             </tr>
                             <?php
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                                    echo "<tr>";
-                                    echo "<td>".$i. "</td>";
-                                    echo "<td>".$stt['id_teacher']. "</td>";
-                                    echo "<td>".$stt['last_name']. "</td>";
-                                    echo "<td>".$stt['first_name']. "</td>";
-                                    echo "<td>".$stt['date_of_birth']. "</td>";
-                                    echo "<td>".$stt['sex']. "</td>";
-                                    echo "<td>".$stt['email']. "</td>";
-                                    echo "<td>".$stt['phone']. "</td>";
-                                    echo "<td>".$stt['date_start_working']. "</td>";
-                                    echo "<td>".$stt['address_tc']. "</td>";
-                                    echo "<td>".$stt['level_tc']. "</td>";
-                                    echo "<td><a href='add_teacher.php'>Thêm</a> | <a href='update_teacher.php?id_teacher=".$stt['id_teacher']."'>Sửa</a> | <a href='delete_teacher.php?id_teacher=".$stt['id_teacher']."'>Xóa</a></td>";
-                                    echo"</tr>";
+                            ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $stt['id_teacher']; ?></td>
+                                <td><?php echo $stt['last_name']; ?></td>
+                                <td><?php echo $stt['first_name']; ?></td>
+                                <td><?php echo $stt['date_of_birth']; ?></td>
+                                <td><?php echo $stt['sex']; ?></td>
+                                <td><?php echo $stt['email']; ?></td>
+                                <td><?php echo $stt['phone']; ?></td>
+                                <td><?php echo $stt['date_start_working']; ?></td>
+                                <td><?php echo $stt['address_tc']; ?></td>
+                                <td><?php echo $stt['level_tc']; ?></td>
+                                <td>
+                                    <a href='add_teacher.php'>Thêm</a>
+                                    <a href='update_teacher.php?id_teacher=<?php echo $stt['id_teacher']; ?>'> | Sửa</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:confirmDelete('delete_teacher.php?id_teacher=<?php echo $stt['id_teacher']; ?>')">Xóa</a>
+                                </td>
+                            </tr>
+                            <?php                     
                                     $i++;
-                            }
+                                }
                             ?>
                         </table>
                         
@@ -238,6 +247,13 @@
         demo.showNotification();
 
     });
+    function confirmDelete(delUrl) 
+    { 
+        if (confirm("Bạn có chắc là muốn xóa?")) 
+        { 
+        document.location = delUrl; 
+        } 
+    } 
 </script>
 
 </html>
