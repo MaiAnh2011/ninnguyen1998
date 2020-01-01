@@ -107,6 +107,12 @@
                             <p>Lớp học</p>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="student_class.php">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Học viên - lớp học</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>
@@ -141,22 +147,31 @@
                                 <th style="text-align: center;">Khóa học</th>
                                 <th style="text-align: center;">Giáo viên</th>
                                 <th style="text-align: center;">Độ tuổi</th>
-                                <th style="text-align: center;">Thao tác</th>
+                                <th style="text-align: center;">Thêm sửa</th>
+                                <th style="text-align: center;">Xóa</th>
                             </tr>
                             <?php
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                                    echo "<tr>";
-                                    echo "<td>".$i. "</td>";
-                                    echo "<td>".$stt['id_class']. "</td>";
-                                    echo "<td>".$stt['name_class']. "</td>";
-                                    echo "<td>".$stt['id_course']. "</td>";
-                                    echo "<td>".$stt['id_teacher']. "</td>";
-                                    echo "<td>".$stt['id_kind']. "</td>";
-                                    echo "<td><a href='add_class.php'>Thêm</a> | <a href='update_class.php?id_class=".$stt['id_class']."'>Sửa</a> | <a href='delete_class.php?id_class=".$stt['id_class']."'>Xóa</a></td>";
-                                    echo"</tr>";
+                            ?>
+                            <tr>
+                                <td><?php echo $i; ?></td>
+                                <td><?php echo $stt['id_class']; ?></td>
+                                <td><?php echo $stt['name_class']; ?></td>
+                                <td><?php echo $stt['id_course']; ?></td>
+                                <td><?php echo $stt['id_teacher']; ?></td>
+                                <td><?php echo $stt['id_kind']; ?></td>
+                                <td>
+                                    <a href='add_class.php'>Thêm</a>
+                                    <a href='update_class.php?id_class=<?php echo $stt['id_class']; ?>'> | Sửa</a>
+                                </td>
+                                <td>
+                                    <a href="javascript:confirmDelete(' delete_class.php?id_class=<?php echo $stt['id_class']; ?>')">Xóa</a>
+                                </td>
+                            </tr>
+                            <?php                     
                                     $i++;
-                            }
+                                }
                             ?>
                         </table>
                         
@@ -227,6 +242,13 @@
         demo.showNotification();
 
     });
+    function confirmDelete(delUrl) 
+    { 
+        if (confirm("Bạn có chắc là muốn xóa?")) 
+        { 
+        document.location = delUrl; 
+        } 
+    } 
 </script>
 
 </html>

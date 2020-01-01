@@ -23,6 +23,7 @@
 	<p id="idten">UserName</p><br><input class="ipdl" type="text" name="userName" value = "<?php echo $rs['username'];?>">
 	<p id="idnn">Pass</p><br><input class="ipdl" type="text" name="passWord" value = "<?php echo $rs['pass'];?>">
 	<p id="idnn">Phân quyền</p><br><input class="ipdl" type="text" name="pq" value = "<?php echo $rs['pq'];?>">
+	<p id="idnn">Người dùng</p><br><input class="ipdl" type="text" name="id_user" value = "<?php echo $rs['id_user'];?>">
 	<br>
 	<input type="submit" value="Cập nhật" id="btncapnhat">
 </form>

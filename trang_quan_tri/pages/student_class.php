@@ -4,11 +4,11 @@
 
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
-        $sql = "select * from account";
+        $sql = "select stc.*, st.level_st from student_class stc join student st on stc.id_student = st.id_student";
         if(isset($_POST['search']))
         {
             $tk = $_POST['search'];
-            $sql = "select * from account where STT like '%$tk%' or username like N'%$tk%' or pass like N'%$tk%'";
+            $sql = "select stc.*, st.level_st from student_class stc join student st on stc.id_student = st.id_student where stc.id_class like '%$tk%' or stc.id_student like N'%$tk%' or stc.status_n like N'%$tk%' or st.level_st like N'%$tk%'";
         }
         $qr = mysqli_query($con,$sql);
 
@@ -135,16 +135,16 @@
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        <h1 style="text-align: center; margin-left: 300px">Danh sách người dùng</h1>
+                        <h1 style="text-align: center; margin-left: 300px">Danh sách lớp học</h1>
                         <br><br><br>
 
                         <table border="1" style="width: 80%;text-align: center; margin: 50px">
                             <tr>
                                 <th style="text-align: center;">STT</th>
-                                <th style="text-align: center;">UserName</th>
-                                <th style="text-align: center;">PassWord</th>
-                                <th style="text-align: center;">Phân quyền</th>
-                                <th style="text-align: center;">Người dùng</th>
+                                <th style="text-align: center;">Mã lớp</th>
+                                <th style="text-align: center;">Mã học viên</th>
+                                <th style="text-align: center;">Trình độ</th>
+                                <th style="text-align: center;">Tình trạng nộp</th>
                                 <th style="text-align: center;">Thêm sửa</th>
                                 <th style="text-align: center;">Xóa</th>
                             </tr>
@@ -152,19 +152,18 @@
                                 $i = 1;
                                 while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
                             ?>
-
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $stt['username']; ?></td>
-                                <td><?php echo $stt['pass']; ?></td>
-                                <td><?php echo $stt['pq']; ?></td>
-                                <td><?php echo $stt['id_user']; ?></td>
+                                <td><?php echo $stt['id_class']; ?></td>
+                                <td><?php echo $stt['id_student']; ?></td>
+                                <td><?php echo $stt['level_st']; ?></td>
+                                <td><?php echo $stt['status_n']; ?></td>
                                 <td>
-                                    <a href='add_user.php'>Thêm</a>
-                                    <a href='update_user.php?stt=<?php echo $stt['STT']; ?>'> | Sửa</a>
+                                    <a href='add_student_class.php'>Thêm</a>
+                                    <a href='update_student_class.php?id_class=<?php echo $stt['id_class']; ?>?id_student=<?php echo $stt['id_student']; ?>'> | Sửa</a>
                                 </td>
                                 <td>
-                                    <a href="javascript:confirmDelete(' delete_user.php?STT=<?php echo $stt['STT']; ?>')">Xóa</a>
+                                    <a href="javascript:confirmDelete(' delete_student_class.php?id_class=<?php echo $stt['id_class']; ?>?id_student=<?php echo $stt['id_student']; ?>')">Xóa</a>
                                 </td>
                             </tr>
                             <?php                     

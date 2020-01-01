@@ -11,5 +11,5 @@
     	echo "Thất bại";
     }
     else
-    	header("location: http://localhost:8081/btl_php/light-bootstrap-dashboard-master/examples/dslophoc.php");
+    	header("location: dslophoc.php");
 ?>

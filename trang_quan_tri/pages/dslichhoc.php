@@ -107,6 +107,12 @@
                             <p>Lớp học</p>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="student_class.php">
+                            <i class="nc-icon nc-bell-55"></i>
+                            <p>Học viên - lớp học</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>
