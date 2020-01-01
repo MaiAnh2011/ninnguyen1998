@@ -1,29 +1,18 @@
 <?php
-	session_start();
-	$name; $pass; $error;
-	if (isset($_POST['submit']))
+	session_start();  
+	$con = mysqli_connect("localhost","root","", "qlttnn");
+	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$name = $_POST['username'];
-		$pass = $_POST['password'];
-
-		require 'connect.php';
-		$query = "SELECT * FROM account WHERE username = :name";
-		$record = $db->prepare($query);
-		$record->bindParam(':name', $name);
-		$record->execute();
-
-		//tra ve mang hoac doi tuong de xu ly
-		$user = $record->fetch(PDO::FETCH_ASSOC);
-
-		if(count($user)>0 and $user['pass'] == $pass)
+		$sql = mysqli_query($con, "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_POST['username']."' AND pass='".$_POST['pass']."' and account.pq = 0");
+		if(mysqli_num_rows($sql) > 0)
 		{
-			#login successful
-			$_SESSION['user'] = $user['username'];
-			header('location: danhsachkhoahoc.php');
+			$_SESSION['username'] = $_POST['username'];
+			$_SESSION['pass'] = $_POST['pass'];
+			echo "<script> alert(' Đăng nhập thành công! xin chào'); location.href='infor.php' </script>" ;
 		}
 		else
 		{
-			$error = 'loi';
+			echo "<script> alert(' Bạn đã đăng nhập vào trang quản trị'); location.href='danhsachkhoahoc.php' </script>";
 		}
 	}
 ?>
@@ -36,23 +25,16 @@
 </head>
 <body>
 	<div class="container" style="background: url(../img/banner1.jpg)">
-		<?php if(isset($error)): ?>
-			<div class="alert alert-danger error">
-			<strong>Lỗi</strong>Tài khoản hoặc mật khẩu sai.
-		</div>
-		<?php endif ?>
-		
-
-		<form class="form-signin" method="post">
+		<form class="form-signin" method="POST" action=''>
 			<h2 class="form-signin-heading">Đăng nhập hệ thống</h2>
 			<div class="form-group" >
 				<input type="text" id="user" name="username" class="form-control" id="username" placeholder="Username" minlength="2" maxlength="20" autofocus required>
 			</div>
 			<div class="form-group">
-				<input type="password" id="pass" name="password" class="form-group" id="password" placeholder="Password" minlength="2" maxlength="20" required>
+				<input type="password" id="pass" name="pass" class="form-group" id="password" placeholder="Password" minlength="2" maxlength="20" required>
 			</div>
 			
-			<button class="btn btn-lg btn-primary btn-block" id="btndangnhap" type="submit" name="submit">Đăng nhập</button>
+			<button class="btn btn-lg btn-primary btn-block" id="btndangnhap" type="submit">Đăng nhập</button>
 		</form>
 	</div>
 </body>

@@ -70,54 +70,19 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="infor.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Trang chủ</p>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a class="nav-link" href="danhsachkhoahoc.php">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Khóa học</p>
+                            <p>Thông tin cá nhân</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="dslichhoc.php">
+                        <a class="nav-link" href="lichhoc_canhan.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Lịch học</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="dshocvien.php">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Học viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsgiaovien.php">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Giáo viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsnguoidung.php">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Người dùng</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dslophoc.php">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Lớp học</p>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -134,47 +99,37 @@
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        
-                        <h1 style="text-align: center; margin-left: 300px">Danh sách khóa học</h1>
-                        <br><br><br>
-                        
+                        <h3 class="col-12">xin chào ! <span style="color: green"><?php echo $_SESSION['username']; ?></span> đến với trang admin</h3>
                         <table border="1" style="width: 80%;text-align: center;">
                             <tr>
-                                <th style="text-align: center;">STT</th>
-                                <th style="text-align: center;">Mã khóa học</th>
-                                <th style="text-align: center;">Tên khóa học</th>
-                                <th style="text-align: center;">Ngày bắt đầu</th>
-                                <th style="text-align: center;">Ngày kết thúc</th>
-                                <th style="text-align: center;">Ngôn ngữ</th>
-                                <th style="text-align: center;">Thêm sửa</th>
-                                <th style="text-align: center;">Xóa</th>
+                                <th style="text-align: center;">Last name</th>
+                                <th style="text-align: center;">First name</th>
+                                <th style="text-align: center;">Ngày sinh</th>
+                                <th style="text-align: center;">Giới tính</th>
+                                <th style="text-align: center;">Email</th>
+                                <th style="text-align: center;">Địa chỉ</th>
                             </tr>
                             <?php
-                                $i = 1;
-                                while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) 
-                                {
-                            ?>
-                            <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $stt['id_course']; ?></td>
-                                <td><?php echo $stt['name_course']; ?></td>
-                                <td><?php echo $stt['date_start']; ?></td>
-                                <td><?php echo $stt['date_end']; ?></td>
-                                <td><?php echo $stt['LANGUAGE_nn']; ?></td>
-                                <td>
-                                    <a href='add_course.php'>Thêm</a>
-                                    <a href='update_course.php?id_course=<?php echo $stt['id_course']; ?>'>Sửa</a>
-                                </td>
-                                <td>
-                                    <a href="javascript:confirmDelete(' delete_course.php?id_course=<?php echo $stt['id_course']; ?>')">Xóa</a>
-                                </td>
-                            </tr>
-                            <?php                     
-                                    $i++;
+                                if ($rows) 
+                                {     
+                                
+                                    while ($row = mysqli_fetch_array($result)) 
+                                    {
+                                        echo "<tr>";
+                                        echo "<td>".$row['last_name']. "</td>";
+                                        echo "<td>".$row['first_name']. "</td>";
+                                        echo "<td>".$row['date_of_birth']. "</td>";
+                                        echo "<td>".$row['sex']. "</td>";
+                                        echo "<td>".$row['email']. "</td>";
+                                        echo "<td>".$row['address_st']. "</td>";
+                                    }
                                 }
                             ?>
                             
                         </table>
+                        
+                        
+                        
                         
                     </div>
                     
@@ -243,13 +198,6 @@
         demo.showNotification();
 
     });
-    function confirmDelete(delUrl) 
-    { 
-        if (confirm("Bạn có chắc là muốn xóa?")) 
-        { 
-        document.location = delUrl; 
-        } 
-    } 
 </script>
 
 </html>

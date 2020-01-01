@@ -4,18 +4,17 @@
 
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
-    $sql = "select * from course";
+    // $sql = "select * from course";
+    $sql = "SELECT account.*, stc.id_student, stc.id_class, sc.*, c.date_start, c.date_end, ck.fee, (case when stc.status_n = 1 then N'Đã nộp' when stc.status_n = 0 then N'Chưa nộp' end) as tinh_trang FROM account LEFT JOIN student on account.id_user = student.id_student join student_class stc on stc.id_student = student.id_student join class cl on stc.id_class = cl.id_class join course c on c.id_course = cl.id_course join course_kind ck on ck.id_course = c.id_course join schedule sc on sc.id_course = c.id_course  WHERE (username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."') "; 
+
     if(isset($_POST['search']))
     {
         $tk = $_POST['search'];
-        $sql = "select * from course where id_course like '%$tk%' or name_course like N'%$tk%' or LANGUAGE_nn like N'%$tk%'";
+        $sql = "SELECT account.*, stc.id_student, stc.id_class, sc.*, c.date_start, c.date_end, ck.fee, (case when stc.status_n = 1 then N'Đã nộp' when stc.status_n = 0 then N'Chưa nộp' end) as tinh_trang FROM account LEFT JOIN student on account.id_user = student.id_student join student_class stc on stc.id_student = student.id_student join class cl on stc.id_class = cl.id_class join course c on c.id_course = cl.id_course join course_kind ck on ck.id_course = c.id_course join schedule sc on sc.id_course = c.id_course  WHERE (username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."') and (stc.id_student like N'%$tk%' or stc.id_class like '%$tk%' or sc.id_schedule like '%$tk%' or sc.id_kind like '%$tk%' or sc.id_course like '%$tk%' or c.date_start like '%$tk%' or c.date_end like '%$tk%' or sc.id_room like '%$tk%' or sc.monday like '%$tk%' or sc.tuesday like '%$tk%' or sc.wednesday like '%$tk%' or sc.thursday like N'%$tk%' or sc.friday like N'%$tk%' or sc.saturday like N'%$tk%' or ck.fee like N'%$tk%')";
     }
-    $qr = mysqli_query($con,$sql);
-
 
     
-    $sql1 = "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."' ";
-    $result = mysqli_query($con, $sql1);
+    $result = mysqli_query($con, $sql);
     $rows = mysqli_num_rows($result);
 
 ?>
@@ -70,16 +69,10 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="infor.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Trang chủ</p>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a class="nav-link" href="danhsachkhoahoc.php">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Khóa học</p>
+                            <p>Thông tin cá nhân</p>
                         </a>
                     </li>
                     <li>
@@ -88,36 +81,7 @@
                             <p>Lịch học</p>
                         </a>
                     </li>
-                    <li>
-                        <a class="nav-link" href="dshocvien.php">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Học viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsgiaovien.php">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Giáo viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsnguoidung.php">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Người dùng</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dslophoc.php">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Lớp học</p>
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -134,47 +98,58 @@
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        
-                        <h1 style="text-align: center; margin-left: 300px">Danh sách khóa học</h1>
-                        <br><br><br>
-                        
-                        <table border="1" style="width: 80%;text-align: center;">
+                        <!-- <h3 class="col-12">xin chào ! <span style="color: green"><?php echo $_SESSION['username']; ?></span> đến với trang admin</h3> -->
+                        <table border="1" style="width: 100%;text-align: center; margin-top: 30px">
                             <tr>
-                                <th style="text-align: center;">STT</th>
-                                <th style="text-align: center;">Mã khóa học</th>
-                                <th style="text-align: center;">Tên khóa học</th>
+                                <th style="text-align: center;">Mã học viên</th>
+                                <th style="text-align: center;">Lớp học</th>
+                                <th style="text-align: center;">Thời khóa biểu</th>
+                                <th style="text-align: center;">Độ tuổi</th>
+                                <th style="text-align: center;">Khóa học</th>
                                 <th style="text-align: center;">Ngày bắt đầu</th>
                                 <th style="text-align: center;">Ngày kết thúc</th>
-                                <th style="text-align: center;">Ngôn ngữ</th>
-                                <th style="text-align: center;">Thêm sửa</th>
-                                <th style="text-align: center;">Xóa</th>
+                                <th style="text-align: center;">Phòng học</th>
+                                <th style="text-align: center;">Thứ 2</th>
+                                <th style="text-align: center;">Thứ 3</th>
+                                <th style="text-align: center;">Thứ 4</th>
+                                <th style="text-align: center;">Thứ 5</th>
+                                <th style="text-align: center;">Thứ 6</th>
+                                <th style="text-align: center;">Thứ 7</th>
+                                <th style="text-align: center;">Học phí</th>
+                                <th style="text-align: center;">Tình trạng nộp</th>
                             </tr>
                             <?php
-                                $i = 1;
-                                while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) 
-                                {
-                            ?>
-                            <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $stt['id_course']; ?></td>
-                                <td><?php echo $stt['name_course']; ?></td>
-                                <td><?php echo $stt['date_start']; ?></td>
-                                <td><?php echo $stt['date_end']; ?></td>
-                                <td><?php echo $stt['LANGUAGE_nn']; ?></td>
-                                <td>
-                                    <a href='add_course.php'>Thêm</a>
-                                    <a href='update_course.php?id_course=<?php echo $stt['id_course']; ?>'>Sửa</a>
-                                </td>
-                                <td>
-                                    <a href="javascript:confirmDelete(' delete_course.php?id_course=<?php echo $stt['id_course']; ?>')">Xóa</a>
-                                </td>
-                            </tr>
-                            <?php                     
-                                    $i++;
+                                if ($rows) 
+                                {     
+                                
+                                    while ($row = mysqli_fetch_array($result)) 
+                                    {
+                                        echo "<tr>";
+                                        echo "<td>".$row['id_student']. "</td>";
+                                        echo "<td>".$row['id_class']. "</td>";
+                                        echo "<td>".$row['id_schedule']. "</td>";
+                                        echo "<td>".$row['id_kind']. "</td>";
+                                        echo "<td>".$row['id_course']. "</td>";
+                                        echo "<td>".$row['date_start']. "</td>";
+                                        echo "<td>".$row['date_end']. "</td>";
+                                        echo "<td>".$row['id_room']. "</td>";
+                                        echo "<td>".$row['monday']. "</td>";
+                                        echo "<td>".$row['tuesday']. "</td>";
+                                        echo "<td>".$row['wednesday']. "</td>";
+                                        echo "<td>".$row['thursday']. "</td>";
+                                        echo "<td>".$row['friday']. "</td>";
+                                        echo "<td>".$row['saturday']. "</td>";
+                                        echo "<td>".$row['fee']. "</td>";
+                                        echo "<td>".$row['tinh_trang']. "</td>";
+                                        
+                                    }
                                 }
                             ?>
                             
                         </table>
+                        
+                        
+                        
                         
                     </div>
                     
@@ -243,13 +218,6 @@
         demo.showNotification();
 
     });
-    function confirmDelete(delUrl) 
-    { 
-        if (confirm("Bạn có chắc là muốn xóa?")) 
-        { 
-        document.location = delUrl; 
-        } 
-    } 
 </script>
 
 </html>
