@@ -4,12 +4,11 @@
 
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
-        $sql = "select * from schedule";
+        $sql = "select * from course_kind";
         if(isset($_POST['search']))
         {
             $tk = $_POST['search'];
-            $sql = "select * from schedule where id_schedule like '%$tk%' or id_kind like N'%$tk%' or id_course like N'%$tk%'
-            or id_room like '%$tk%' or monday like N'%$tk%' or tuesday like N'%$tk%' or wednesday like N'%$tk%' or thursday like N'%$tk%' or friday like N'%$tk%' or saturday like N'%$tk%'";
+            $sql = "select * from course_kind where id_course like '%$tk%' or id_kind like N'%$tk%' or fee like N'%$tk%' or salary like N'%$tk%'";
         }
         $qr = mysqli_query($con,$sql);
 
@@ -135,29 +134,23 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="row" style="margin-top: 30px">
+                        <div class="row">
 
-                            <form action="" method="POST" role="form" >
+                            <form action="" method="POST" role="form">
                                 <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        <h1 style="text-align: center; margin-left: -200px; margin-top: 130px">Thời khóa biểu</h1>
+                        <h1 style="text-align: center; margin-left: 300px">Danh sách lớp học</h1>
                         <br><br><br>
 
-                        <table border="1" style="width: 100%;text-align: center; margin: 50px">
+                        <table border="1" style="width: 80%;text-align: center; margin: 50px">
                             <tr>
                                 <th style="text-align: center;">STT</th>
-                                <th style="text-align: center;">Mã TKB</th>
+                                <th style="text-align: center;">Mã khóa học</th>
                                 <th style="text-align: center;">Độ tuổi</th>
-                                <th style="text-align: center;">Khóa học</th>
-                                <th style="text-align: center;">Phòng</th>
-                                <th style="text-align: center;">Thứ 2</th>
-                                <th style="text-align: center;">Thứ 3</th>
-                                <th style="text-align: center;">Thứ 4</th>
-                                <th style="text-align: center;">Thứ 5</th>
-                                <th style="text-align: center;">Thứ 6</th>
-                                <th style="text-align: center;">Thứ 7</th>
+                                <th style="text-align: center;">Học phí</th>
+                                <th style="text-align: center;">Lương</th>
                                 <th style="text-align: center;">Thêm sửa</th>
                                 <th style="text-align: center;">Xóa</th>
                             </tr>
@@ -167,22 +160,16 @@
                             ?>
                             <tr>
                                 <td><?php echo $i; ?></td>
-                                <td><?php echo $stt['id_schedule']; ?></td>
-                                <td><?php echo $stt['id_kind']; ?></td>
                                 <td><?php echo $stt['id_course']; ?></td>
-                                <td><?php echo $stt['id_room']; ?></td>
-                                <td><?php echo $stt['monday']; ?></td>
-                                <td><?php echo $stt['tuesday']; ?></td>
-                                <td><?php echo $stt['wednesday']; ?></td>
-                                <td><?php echo $stt['thursday']; ?></td>
-                                <td><?php echo $stt['friday']; ?></td>
-                                <td><?php echo $stt['saturday']; ?></td>
+                                <td><?php echo $stt['id_kind']; ?></td>
+                                <td><?php echo $stt['fee']; ?></td>
+                                <td><?php echo $stt['salary']; ?></td>
                                 <td>
-                                    <a href='add_lichhoc.php'>Thêm</a>
-                                    <a href='update_lichhoc.php?id_schedule=<?php echo $stt['id_schedule']; ?>'> | Sửa</a>
+                                    <a href='add_course_kind.php'>Thêm</a>
+                                    <a href='update_course_kind.php?stt=<?php echo $stt['stt']; ?>'> | Sửa</a>
                                 </td>
                                 <td>
-                                    <a href="javascript:confirmDelete(' delete_lichhoc.php?id_schedule=<?php echo $stt['id_schedule']; ?>')">Xóa</a>
+                                    <a href="javascript:confirmDelete(' delete_course_kind.php?stt=<?php echo $stt['stt']; ?>')">Xóa</a>
                                 </td>
                             </tr>
                             <?php                     
