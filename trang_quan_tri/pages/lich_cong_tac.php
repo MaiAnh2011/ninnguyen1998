@@ -1,17 +1,21 @@
 
 <?php
-    
+    session_start();  
 
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
-        $sql = "select * from class";
-        if(isset($_POST['search']))
-        {
-            $tk = $_POST['search'];
-            $sql = "select * from class where id_class like '%$tk%' or name_class like N'%$tk%' or id_course like N'%$tk%'
-            or id_teacher like '%$tk%' or id_kind like N'%$tk%'";
-        }
-        $qr = mysqli_query($con,$sql);
+    // $sql = "select * from course";
+    $sql = "SELECT account.*, cl.id_teacher, cl.id_class, cl.id_course, cl.id_kind, ck.salary FROM account LEFT JOIN teacher tc on account.id_user = tc.id_teacher join class cl on cl.id_teacher = tc.id_teacher left join course_kind ck on ck.id_course = cl.id_course and ck.id_kind = cl.id_kind WHERE (username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."') "; 
+
+    if(isset($_POST['search']))
+    {
+        $tk = $_POST['search'];
+        $sql = "SELECT account.*, cl.id_teacher, cl.id_class, cl.id_course, cl.id_kind, ck.salary FROM account LEFT JOIN teacher tc on account.id_user = tc.id_teacher join class cl on cl.id_teacher = tc.id_teacher left join course_kind ck on ck.id_course = cl.id_course and ck.id_kind = cl.id_kind  WHERE (username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."') and (cl.id_teacher like N'%$tk%' or cl.id_class like '%$tk%' or cl.id_course like '%$tk%' or cl.id_kind like '%$tk%' or ck.salary like '%$tk%'')";
+    }
+
+    
+    $result = mysqli_query($con, $sql);
+    $rows = mysqli_num_rows($result);
 
 ?>
 
@@ -65,72 +69,24 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <!-- <li class="nav-item active">
-                        <a class="nav-link" href="dashboard.html">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="infor_teacher.php">
                             <i class="nc-icon nc-chart-pie-35"></i>
-                            <p>Trang chủ</p>
-                        </a>
-                    </li> -->
-                    <li>
-                        <a class="nav-link" href="danhsachkhoahoc.php">
-                            <i class="nc-icon nc-circle-09"></i>
-                            <p>Khóa học</p>
+                            <p>Thông tin cá nhân</p>
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="dslichhoc.php">
+                        <a class="nav-link" href="lich_cong_tac.php">
                             <i class="nc-icon nc-notes"></i>
-                            <p>Lịch học</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dshocvien.php">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Học viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsgiaovien.php">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Giáo viên</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dsnguoidung.php">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Người dùng</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="dslophoc.php">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Lớp học</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="student_class.php">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Học viên - lớp học</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="course_kind.php">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Học phí_lương</p>
+                            <p>Lịch công tác</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="login.php">
-                            <i class="nc-icon nc-notes"></i>
+                            <i class="nc-icon nc-pin-3"></i>
                             <p>Đăng xuất</p>
                         </a>
                     </li>
-                    <!-- <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
-                            <i class="nc-icon nc-alien-33"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li> -->
                 </ul>
             </div>
         </div>
@@ -141,51 +97,43 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="row">
-
+                        <div class="col-12">
                             <form action="" method="POST" role="form">
                                 <span style="height: 40px;font-size: 28px;margin-right: 10px;margin-left: 18px;">Tìm kiếm:</span><input class="ipdl" type="text" name="search" style="height: 40px;border: 1px solid black;border-radius: 10px;width: 400px;">
                                 <button style="height: 40px;border-radius: 5px; margin-left: 10px" type="submit">Search</button>
                             </form>
                         </div>
-                        <h1 style="text-align: center; margin-left: 300px">Danh sách lớp học</h1>
-                        <br><br><br>
-
-                        <table border="1" style="width: 80%;text-align: center; margin: 50px">
+                        <!-- <h3 class="col-12">xin chào ! <span style="color: green"><?php echo $_SESSION['username']; ?></span> đến với trang admin</h3> -->
+                        <table border="1" style="width: 100%;text-align: center; margin-top: 30px">
                             <tr>
-                                <th style="text-align: center;">STT</th>
+                                <th style="text-align: center;">Mã giáo viên</th>
                                 <th style="text-align: center;">Mã lớp</th>
-                                <th style="text-align: center;">Tên lớp</th>
-                                <th style="text-align: center;">Khóa học</th>
-                                <th style="text-align: center;">Giáo viên</th>
+                                <th style="text-align: center;">Mã khóa học</th>
                                 <th style="text-align: center;">Độ tuổi</th>
-                                <th style="text-align: center;">Thêm sửa</th>
-                                <th style="text-align: center;">Xóa</th>
+                                <th style="text-align: center;">Lương</th>
                             </tr>
                             <?php
-                                $i = 1;
-                                while ($stt = mysqli_fetch_array($qr, MYSQLI_ASSOC)) {
-                            ?>
-                            <tr>
-                                <td><?php echo $i; ?></td>
-                                <td><?php echo $stt['id_class']; ?></td>
-                                <td><?php echo $stt['name_class']; ?></td>
-                                <td><?php echo $stt['id_course']; ?></td>
-                                <td><?php echo $stt['id_teacher']; ?></td>
-                                <td><?php echo $stt['id_kind']; ?></td>
-                                <td>
-                                    <a href='add_class.php'>Thêm</a>
-                                    <a href='update_class.php?id_class=<?php echo $stt['id_class']; ?>'> | Sửa</a>
-                                </td>
-                                <td>
-                                    <a href="javascript:confirmDelete(' delete_class.php?id_class=<?php echo $stt['id_class']; ?>')">Xóa</a>
-                                </td>
-                            </tr>
-                            <?php                     
-                                    $i++;
+                                if ($rows) 
+                                {     
+                                
+                                    while ($row = mysqli_fetch_array($result)) 
+                                    {
+                                        echo "<tr>";
+                                        echo "<td>".$row['id_teacher']. "</td>";
+                                        echo "<td>".$row['id_class']. "</td>";
+                                        echo "<td>".$row['id_course']. "</td>";
+                                        echo "<td>".$row['id_kind']. "</td>";
+                                        echo "<td>".$row['salary']. "</td>";
+                                        
+                                        
+                                    }
                                 }
                             ?>
+                            
                         </table>
+                        
+                        
+                        
                         
                     </div>
                     
@@ -254,13 +202,6 @@
         demo.showNotification();
 
     });
-    function confirmDelete(delUrl) 
-    { 
-        if (confirm("Bạn có chắc là muốn xóa?")) 
-        { 
-        document.location = delUrl; 
-        } 
-    } 
 </script>
 
 </html>

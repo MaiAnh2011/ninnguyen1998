@@ -4,15 +4,6 @@
 
     $con = mysqli_connect("localhost", "root","","qlttnn");
 
-    $sql = "select * from course";
-    if(isset($_POST['search']))
-    {
-        $tk = $_POST['search'];
-        $sql = "select * from course where id_course like '%$tk%' or name_course like N'%$tk%' or LANGUAGE_nn like N'%$tk%'";
-    }
-    $qr = mysqli_query($con,$sql);
-
-
     
     $sql1 = "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_SESSION['username']."' AND pass='".$_SESSION['pass']."' ";
     $result = mysqli_query($con, $sql1);
@@ -82,7 +73,12 @@
                             <p>Lịch học</p>
                         </a>
                     </li>
-                    
+                    <li>
+                        <a class="nav-link" href="login.php">
+                            <i class="nc-icon nc-pin-3"></i>
+                            <p>Đăng xuất</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

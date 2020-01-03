@@ -118,6 +118,12 @@
                             <p>Học phí_lương</p>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="login.php">
+                            <i class="nc-icon nc-notes"></i>
+                            <p>Đăng xuất</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>

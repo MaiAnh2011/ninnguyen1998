@@ -3,14 +3,20 @@
 	$con = mysqli_connect("localhost","root","", "qlttnn");
 	if($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$sql = mysqli_query($con, "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_POST['username']."' AND pass='".$_POST['pass']."' and account.pq = 0");
-		if(mysqli_num_rows($sql) > 0)
+		// $sql = mysqli_query($con, "SELECT account.*, student.*, teacher.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_POST['username']."' AND pass='".$_POST['pass']."' and account.pq = 0");
+		if(mysqli_num_rows(mysqli_query($con, "SELECT account.*, student.* FROM account LEFT JOIN student on account.id_user = student.id_student WHERE username='".$_POST['username']."' AND pass='".$_POST['pass']."' and account.pq = 0")) > 0 )
 		{
 			$_SESSION['username'] = $_POST['username'];
 			$_SESSION['pass'] = $_POST['pass'];
 			echo "<script> alert(' Đăng nhập thành công! xin chào'); location.href='infor.php' </script>" ;
 		}
-		else
+		else if (mysqli_num_rows(mysqli_query($con, "SELECT account.*, teacher.* FROM account LEFT JOIN teacher on account.id_user = teacher.id_teacher WHERE username='".$_POST['username']."' AND pass='".$_POST['pass']."' and account.pq = 2")) > 0)
+		{
+			$_SESSION['username'] = $_POST['username'];
+			$_SESSION['pass'] = $_POST['pass'];
+			echo "<script> alert(' Đăng nhập thành công! xin chào'); location.href='infor_teacher.php' </script>" ;
+		}
+		else 
 		{
 			echo "<script> alert(' Bạn đã đăng nhập vào trang quản trị'); location.href='danhsachkhoahoc.php' </script>";
 		}

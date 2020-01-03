@@ -76,12 +76,17 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="dslichhoc.php">
+                        <a class="nav-link" href="lichhoc_canhan.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Lịch học</p>
                         </a>
                     </li>
-                    
+                    <li>
+                        <a class="nav-link" href="login.php">
+                            <i class="nc-icon nc-pin-3"></i>
+                            <p>Đăng xuất</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
