@@ -125,6 +125,12 @@
                             <p>Đăng xuất</p>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="gui_mail.php">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Gửi mail</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>

@@ -1,19 +1,4 @@
 
-<?php
-    
-
-    $con = mysqli_connect("localhost", "root","","qlttnn");
-
-        $sql = "select * from class";
-        if(isset($_POST['search']))
-        {
-            $tk = $_POST['search'];
-            $sql = "select * from class where id_class like '%$tk%' or name_class like N'%$tk%' or id_course like N'%$tk%'
-            or id_teacher like '%$tk%' or id_kind like N'%$tk%'";
-        }
-        $qr = mysqli_query($con,$sql);
-
-?>
 
 <!-- 
 =========================================================
@@ -145,6 +130,12 @@
                             <p>Đăng xuất</p>
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="gui_mail.php">
+                            <i class="nc-icon nc-paper-2"></i>
+                            <p>Gửi mail</p>
+                        </a>
+                    </li>
                     <!-- <li class="nav-item active active-pro">
                         <a class="nav-link active" href="upgrade.html">
                             <i class="nc-icon nc-alien-33"></i>
@@ -162,15 +153,16 @@
                 <div class="container-fluid">
                     <div class="container">
                         <h1>Send Email Form</h1>
-                        <form id="send-email-form" method="POST" action="?action=send">
-                            <label>Gửi đến email: </label>
-                            <input type="text" name="email" value="" style="width: 300px" /><br/>
+                        <form id="send-email-form" method="POST" action="xl_gui_mail.php">
+                            
                             <label>Tiêu đề: </label>
                             <input type="text" name="title" value="" style="width: 300px" /><br/>
                             <label>Nội dung: </label>
                             <textarea name="content"></textarea><br/>
-                            <input type="submit" value="Send Email" style="width: 300px" />
+                            <input type="submit" value="Send Email" name = "send" style="width: 300px" />
                         </form>
+                        <!--  -->
+
                     </div>
                     
                 </div>
